@@ -224,6 +224,8 @@ if __name__ == "__main__":
 
     # 2. Load initial velocity and constitutive models
     model = Estimator(position, cfg, dat, opt, ppl, phy)
+    model.load_weights(dat.model_path, iteration=arg.load_iter, phase="velocity")
+    print(f"velocity loaded: {model.velocity.tolist()}")
     resume_path = model.load_weights(dat.model_path, iteration=arg.load_iter, phase="constitution")
     print(f"constitution parameters loaded from {resume_path}")
 
